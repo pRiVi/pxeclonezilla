@@ -4,8 +4,10 @@
 
   * $NAME -> Name des Computers; mehrere sind moeglich dann muss dies pro Computer einmal gemacht werden
   * 00-11-22-... -> MAC Adresse von $NAME
-  * $STORESERVERIP -> IP des Servers, der das Share hat wo die Backups hin gespeichert werden sollen 
   * $SERVERIP -> IP des Servers der den FTP und TFTP Server hat
+  * $STORESERVERIP -> IP des Servers, der das Share hat wo die Backups hin gespeichert werden sollen 
+  * $SHARENAME -> Sharename auf auf $STORESERVERIP
+  * $PASSWORD -> Passwort fuer das Share auf $STORESERVERIP 
 
 ## Install ISCDHCP, configure it and add PXE to DHCP Server
 
@@ -66,7 +68,7 @@ mount.$NAME.sh:
 while [ ! -e /home/partimag/backup_directory ]; do
   sleep 1;
   echo "Mount failed, try again.";
-  mount -t cifs -o user=clonezilla,password=PASSWORD //$STORESERVERIP/$SHARENAME/ /home/partimag;
+  mount -t cifs -o user=clonezilla,password=$PASSWORD //$STORESERVERIP/$SHARENAME/ /home/partimag;
 done;
 ```
 
