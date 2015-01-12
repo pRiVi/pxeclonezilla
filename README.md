@@ -58,7 +58,7 @@ TIMEOUT 15
 PROMPT 1
 ```
 
- * ln -s $NAME.cfg 00-11-22-... # <- MAC Adresse des jeweiligen Computers
+ * ln -s $NAME.cfg 00-11-22-aa-... # <- MAC Adresse des jeweiligen Computers
  * Freigabe auf Server erzeugen und darin die Datei "backup_directory" im Grundverzeichniss leer erzeugen.
  * cd /srv/ftp/
 
