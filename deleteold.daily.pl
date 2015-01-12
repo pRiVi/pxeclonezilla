@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 use strict;
 
-#0 * * * * /usr/bin/perl /bin/deleteold.daily.pl 2>&1 >/tmp/deleting.txt
+#0 * * * * /usr/bin/perl /root/pxebackup/deleteold.daily.pl 2>&1 >/tmp/deleting.txt
 
 my $passwd = `cat /root/sharepw.sekretairin.txt`;
 chomp($passwd);
