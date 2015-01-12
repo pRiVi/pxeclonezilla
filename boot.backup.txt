@@ -1,0 +1,11 @@
+=============================================
+
+               = DATENSICHERUNG =
+
+
+    ->   Um das Backup zu starten, "backup" eingeben.
+
+Starte Windows in 5 Sekunden...
+
+=============================================
+
