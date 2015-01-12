@@ -1,6 +1,8 @@
 # PXE Backup via Clonezilla
 
-## Add PXE to DHCP Server
+## Install ISCDHCP, configure it and add PXE to DHCP Server
+
+apt-get install isc-dhcp-server
 
 /etc/dhcp3/dhcpd.conf
 ```
