@@ -73,5 +73,7 @@ done;
 ## Install Clonezilla
 
  * cd /var/lib/tftpboot/
- * (TODO/FIXME) How to generate filesystem.squashfs, initrd.img and vmlinuz and store it there?
+ * Unter http://sourceforge.net/projects/clonezilla/files/clonezilla_live_stable/ die aktuelle ZIP herunterladen
+ * Unter "live" die Dateien "filesystem.squashfs", "initrd.img" und "vmlinuz" entpacken und nach /var/lib/tftpboot/ legen
+
 
