@@ -3,7 +3,7 @@ use strict;
 
 #0 * * * * /usr/bin/perl /root/pxebackup/deleteold.daily.pl 2>&1 >/tmp/deleting.txt
 
-my $passwd = `cat /root/sharepw.sekretairin.txt`;
+my $passwd = `cat /root/pxebackup/config/sharepw.sekretairin.txt`;
 chomp($passwd);
 
 my $mountdir = "/mnt/feuss";
