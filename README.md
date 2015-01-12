@@ -2,9 +2,9 @@
 
 ## Install ISCDHCP, configure it and add PXE to DHCP Server
 
-apt-get install isc-dhcp-server
+* apt-get install isc-dhcp-server
 
-/etc/dhcp3/dhcpd.conf
+/etc/dhcp3/dhcpd.conf:
 ```
 subnet x.x.x.x netmask y.y.y.y {
 ...
@@ -15,22 +15,21 @@ subnet x.x.x.x netmask y.y.y.y {
 
 ## Install tftp and ftp
 
-apt-get install tftpd proftpd
-
-(TOCO/FIXME) Enable /srv/ftp/ and /var/lib/tftpboot/... or do ftp with username and password? Might be ssh an better solution?
+ * apt-get install tftpd proftpd
+ * (TOCO/FIXME) Enable /srv/ftp/ and /var/lib/tftpboot/... or do ftp with username and password? Might be ssh an better solution?
 
 ## Configure clonezilla PXE boot
 
-cd /var/lib/tftpboot/
 ```
+cd /var/lib/tftpboot/
 for i in boot.txt boot.backup.txt chain.c32 pxelinux.0; do ln -s /path/to/$i .; done
 ```
 
 ## Create welcome message:
 
-ln -s boot.backup.txt boot.NAME.txt
-mkdir pxelinux.cfg
-cd pxelinux.cfg
+ * ln -s boot.backup.txt boot.NAME.txt
+ * mkdir pxelinux.cfg
+ * cd pxelinux.cfg
 
 NAME.cfg:
 ```
@@ -50,10 +49,9 @@ TIMEOUT 15
 PROMPT 1
 ```
 
-ln -s NAME.cfg 00-11-22-...
-cd /srv/ftp/
-
-Freigabe erzeugen und darin die Datei "backup_directory" im Grundverzeichniss erzeugen.
+ * ln -s NAME.cfg 00-11-22-... # <- MAC Adresse des jeweiligen Computers
+ * cd /srv/ftp/
+ * Freigabe auf Server erzeugen und darin die Datei "backup_directory" im Grundverzeichniss leer erzeugen.
 
 mount.NAME.sh:
 ```
@@ -67,7 +65,6 @@ done;
 
 ## Install Clonezilla
 
-cd /var/lib/tftpboot/
-
-(TODO/FIXME) How to generate filesystem.squashfs, initrd.img and vmlinuz and store it there?
+ * cd /var/lib/tftpboot/
+ * (TODO/FIXME) How to generate filesystem.squashfs, initrd.img and vmlinuz and store it there?
 
