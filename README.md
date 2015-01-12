@@ -73,7 +73,7 @@ done;
 ## Install Clonezilla
 
  * cd /var/lib/tftpboot/
- * Unter http://sourceforge.net/projects/clonezilla/files/clonezilla_live_stable/ (zuletzt getestet mit 2.3.1-18) die aktuelle ZIP herunterladen; nicht 64 Bit Maschinen unterstuetzen brauchen iX86 und nicht amd64!
+ * Unter http://sourceforge.net/projects/clonezilla/files/clonezilla_live_stable/ (zuletzt getestet mit 2.3.1-18) die aktuelle ZIP herunterladen; nicht 64 Bit Maschinen brauchen iX86 und nicht amd64!
  * Unter "live" die Dateien "filesystem.squashfs", "initrd.img" und "vmlinuz" entpacken und nach /var/lib/tftpboot/ legen
 
 
