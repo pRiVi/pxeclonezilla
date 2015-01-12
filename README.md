@@ -59,8 +59,8 @@ PROMPT 1
 ```
 
  * ln -s $NAME.cfg 00-11-22-... # <- MAC Adresse des jeweiligen Computers
- * cd /srv/ftp/
  * Freigabe auf Server erzeugen und darin die Datei "backup_directory" im Grundverzeichniss leer erzeugen.
+ * cd /srv/ftp/
 
 mount.$NAME.sh:
 ```
