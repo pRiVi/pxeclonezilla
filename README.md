@@ -20,7 +20,9 @@ apt-get install tftpd proftpd
 ## Configure clonezilla PXE boot
 
 cd /var/lib/tftpboot/
+```
 for i in boot.txt boot.backup.txt chain.c32 pxelinux.0; do ln -s /path/to/$i .; done
+```
 
 ## Create welcome message:
 
