@@ -15,34 +15,22 @@ subnet x.x.x.x netmask y.y.y.y {
 
 apt-get install tftpd proftpd
 
-(TOCO/FIXME) Enable /srv/ftp/ for anonymous ftp... or do it with username and password? Might be ssh an better solution?
+(TOCO/FIXME) Enable /srv/ftp/ and /var/lib/tftpboot/... or do ftp with username and password? Might be ssh an better solution?
 
 ## Configure clonezilla PXE boot
 
 cd /var/lib/tftpboot/
+for i in boot.txt boot.backup.txt chain.c32 pxelinux.0; do ln -s /path/to/$i .; done
 
 ## Create welcome message:
 
-boot.name.txt
-```
-=============================================
-
-               = DATENSICHERUNG =
-
-
-    ->   Um das Backup zu starten, "backup" eingeben.
-
-Starte Windows in 5 Sekunden...
-
-=============================================
-```
-
+ln -s boot.backup.txt boot.NAME.txt
 mkdir pxelinux.cfg
 cd pxelinux.cfg
 
-name.cfg:
+NAME.cfg:
 ```
-DISPLAY boot.name.txt
+DISPLAY boot.NAME.txt
 
 DEFAULT win7
 
@@ -52,18 +40,18 @@ LABEL win7
 
 LABEL backup
         kernel vmlinuz
-        append initrd=initrd.img boot=live config noswap nolocales edd=on nomodeset ocs_live_run="ocs-live-general" ocs_live_extra_param="" keyboard-layouts="" ocs_live_batch="no" locales="" vga=788 nosplash noprompt fetch=tftp://SERVERIP/filesystem.squashfs keyboard-layouts=de locales=de_DE.UTF-8 ocs_live_run="/usr/sbin/ocs-sr -q -j2 -rm-win-swap-hib -z1 -i 2000 -sc -p poweroff savedisk ask_user sda" ocs_prerun1="sudo wget -O /root/mount.sh ftp://SERVERIP/mount.name.sh" ocs_prerun2="chmod +x /root/mount.sh" ocs_prerun3="/root/mount.sh"
+        append initrd=initrd.img boot=live config noswap nolocales edd=on nomodeset ocs_live_run="ocs-live-general" ocs_live_extra_param="" keyboard-layouts="" ocs_live_batch="no" locales="" vga=788 nosplash noprompt fetch=tftp://SERVERIP/filesystem.squashfs keyboard-layouts=de locales=de_DE.UTF-8 ocs_live_run="/usr/sbin/ocs-sr -q -j2 -rm-win-swap-hib -z1 -i 2000 -sc -p poweroff savedisk ask_user sda" ocs_prerun1="sudo wget -O /root/mount.sh ftp://SERVERIP/mount.NAME.sh" ocs_prerun2="chmod +x /root/mount.sh" ocs_prerun3="/root/mount.sh"
 
 TIMEOUT 15
 PROMPT 1
 ```
 
-ln -s name.cfg 00-11-22-...
+ln -s NAME.cfg 00-11-22-...
 cd /srv/ftp/
 
 Freigabe erzeugen und darin die Datei "backup_directory" im Grundverzeichniss erzeugen.
 
-mount.name.sh:
+mount.NAME.sh:
 ```
 #!/bin/bash
 while [ ! -e /home/partimag/backup_directory ]; do
@@ -77,5 +65,5 @@ done;
 
 cd /var/lib/tftpboot/
 
-(TODO/FIXME) How to generate filesystem.squashfs and vmlinuz and store it there?
+(TODO/FIXME) How to generate filesystem.squashfs, initrd.img and vmlinuz and store it there?
 
